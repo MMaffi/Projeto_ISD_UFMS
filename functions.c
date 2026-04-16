@@ -104,12 +104,17 @@ void binarioParaHex(int bin[8], char hex[3]) {
   hex[2] = '\0';
 }
 
-void varIntParaBinario(int num, int vet[8]) {
+void varCharParaBinario(char num[9], int vet[8]) {
   int i;
 
-  for (i = 7; i >= 0; i--) {
-    vet[i] = num % 10;
-    num /= 10;
+  for (i = 0; i < 8; i++) {
+    if (num[i] == '0') {
+      vet[i] = 0;
+    } else if (num[i] == '1') {
+      vet[i] = 1;
+    } else {
+      vet[i] = 0;
+    }
   }
 }
 

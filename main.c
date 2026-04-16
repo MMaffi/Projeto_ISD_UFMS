@@ -1,10 +1,11 @@
 #include <stdio.h>
+#include <string.h>
 #include "functions.h"
 
 int main(void) {
 
   /* Declaração de variáveis */
-  int bi1, bi2, bi3;
+  char bi1[9], bi2[9], bi3[9];
   int vet1[8], vet2[8], vet3[8];
   int vetOpAux[8], vetOpFinal[8];
   char op1, op2;
@@ -24,16 +25,16 @@ int main(void) {
 
   while (controle) {
     printf("Digite o primeiro número binário (-1 para encerrar): ");
-    scanf("%d", &bi1);
+    scanf("%s", bi1);
     printf("\n");
 
-    if (bi1 != -1) {
+    if (strcmp(bi1, "-1") != 0) {
       printf("Digite o primeiro operando (+ ou -): ");
       scanf(" %c", &op1);
       printf("\n");
 
       printf("Digite o seugndo número binário: ");
-      scanf("%d", &bi2);
+      scanf("%s", bi2);
       printf("\n");
 
       printf("Digite o segundo operando (+ ou -): ");
@@ -41,12 +42,12 @@ int main(void) {
       printf("\n");
 
       printf("Digite o terceiro número binário: ");
-      scanf("%d", &bi3);
+      scanf("%s", bi3);
       printf("\n");
 
-      varIntParaBinario(bi1, vet1);
-      varIntParaBinario(bi2, vet2);
-      varIntParaBinario(bi3, vet3);
+      varCharParaBinario(bi1, vet1);
+      varCharParaBinario(bi2, vet2);
+      varCharParaBinario(bi3, vet3);
 
       if (op1 == '+') {
         somaBinaria(vet1, vet2, vetOpAux);
@@ -83,29 +84,25 @@ int main(void) {
       printf("==========================\n");
       printf("\n--------------------------\n\n");
       mostravetores(vet1);
-      printf("b");
-      printf(" ( ");
+      printf("b ( ");
       printf("%di ", v1);
       mostrarHex(h1);
       printf("h )\n");
       printf("%c\n", op1);
       mostravetores(vet2);
-      printf("b");
-      printf(" ( ");
+      printf("b ( ");
       printf("%di ", v2);
       mostrarHex(h2);
       printf("h )\n");
       printf("%c\n", op2);
       mostravetores(vet3);
-      printf("b");
-      printf(" ( ");
+      printf("b ( ");
       printf("%di ", v3);
       mostrarHex(h3);
       printf("h )\n");
       printf("=\n");
       mostravetores(vetOpFinal);
-      printf("b");
-      printf(" ( ");
+      printf("b ( ");
       printf("%di ", result);
       mostrarHex(hresult);
       printf("h )\n");

@@ -9,7 +9,7 @@ int binarioParaDecimal(int bin[8]);
 
 void binarioParaHex(int bin[8], char hex[3]);
 
-void varIntParaBinario(int num, int vet[8]);
+void varCharParaBinario(char num[9], int vet[8]);
 
 void mostravetores(int vet[8]);
 
