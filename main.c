@@ -6,8 +6,11 @@ int main(void) {
   /* Declaração de variáveis */
   int bi1, bi2, bi3;
   int vet1[8], vet2[8], vet3[8];
+  int vetOpAux[8], vetOpFinal[8];
   char op1, op2;
   int controle;
+  int v1, v2, v3, result;
+  char h1[3], h2[3], h3[3], hresult[3];
 
   printf("=========================\n");
   printf("Seja bem vindo ao CalcBi!\n");
@@ -41,17 +44,71 @@ int main(void) {
       scanf("%d", &bi3);
       printf("\n");
 
-      intParaBinario(bi1, vet1);
-      intParaBinario(bi2, vet2);
-      intParaBinario(bi3, vet3);
+      varIntParaBinario(bi1, vet1);
+      varIntParaBinario(bi2, vet2);
+      varIntParaBinario(bi3, vet3);
 
-      calculosoma();
+      if (op1 == '+') {
+        somaBinaria(vet1, vet2, vetOpAux);
+      } else {
+        if (op1 == '-') {
+          subtracaoBinaria(vet1, vet2, vetOpAux);
+        } else {
+          printf("Operação Inválida!");
+        }
+      }
 
+      if (op2 == '+') {
+        somaBinaria(vetOpAux, vet3, vetOpFinal);
+      } else {
+        if (op2 == '-') {
+          subtracaoBinaria(vetOpAux, vet3, vetOpFinal);
+        } else {
+          printf("Operação Inválida!");
+        }
+      }
+
+      v1 = binarioParaDecimal(vet1);
+      v2 = binarioParaDecimal(vet2);
+      v3 = binarioParaDecimal(vet3);
+      result = binarioParaDecimal(vetOpFinal);
+
+      binarioParaHex(vet1, h1);
+      binarioParaHex(vet2, h2);
+      binarioParaHex(vet3, h3);
+      binarioParaHex(vetOpFinal, hresult);
+
+      printf("==========================\n");
+      printf("========Resultados========\n");
+      printf("==========================\n");
+      printf("\n--------------------------\n\n");
       mostravetores(vet1);
-      printf("\n");
+      printf("b");
+      printf(" ( ");
+      printf("%di ", v1);
+      mostrarHex(h1);
+      printf("h )\n");
+      printf("%c\n", op1);
       mostravetores(vet2);
-      printf("\n");
+      printf("b");
+      printf(" ( ");
+      printf("%di ", v2);
+      mostrarHex(h2);
+      printf("h )\n");
+      printf("%c\n", op2);
       mostravetores(vet3);
+      printf("b");
+      printf(" ( ");
+      printf("%di ", v3);
+      mostrarHex(h3);
+      printf("h )\n");
+      printf("=\n");
+      mostravetores(vetOpFinal);
+      printf("b");
+      printf(" ( ");
+      printf("%di ", result);
+      mostrarHex(hresult);
+      printf("h )\n");
 
     } else {
       printf("Encerrando o programa!\n");
